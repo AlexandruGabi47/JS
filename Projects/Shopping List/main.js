@@ -1,28 +1,35 @@
 // Getting the refferences to the respective elements
 // Text input:
-var word = document.querySelector("#word");
+var word = document.getElementById("word");
 //
-var button = document.querySelector("#b1");
-var ul = document.querySelector("#shoppingList");
+var button = document.getElementById("b1");
+var ul = document.getElementById("shoppingList");
 // Storing the amount of elements
-const elements = 0;
+var elements = 0;
 // Assigning the 'addItem' to the 'click' event
 addButton.addEventListener("click", addItem);
 function addItem()
 {
     if(word.value !== "")
     {
-        // Creating and modifying the element
+        // Creates and modifies the element
         var li = document.createElement("li");
-        li.appendChild(word.value);
-        // Creating the edit button
+        li.textContent = word.value + "\xa0\xa0";
+        // Creates the edit button
         var editButton = document.createElement("button");
-        editButton.value = "Edit";
-        editButton.
+        editButton.textContent = "Edit";
+        editButton.setAttribute("id", "editButton" + elements);
         editButton.addEventListener("click", editItem);
+        // Creates the delete button
+        var deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.setAttribute("id", "deleteButton" + elements);
+        deleteButton.addEventListener("click", deleteItem);
         // Adding the element and buttons to the list
+        li.appendChild(editButton);
+        li.appendChild(deleteButton);
         ul.appendChild(li);
-        // Clearing the input box & increasing the element size
+        // Clears the input box & increases the element size
         word.value = "";
         elements++;
     }
@@ -33,5 +40,5 @@ function editItem()
 }
 function deleteItem()
 {
-
+    ul.removeChild(this);   //TODO THIS DOESN'T WORK
 }

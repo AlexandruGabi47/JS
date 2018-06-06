@@ -15,6 +15,7 @@ function addItem()
         // Creates and modifies the element
         var li = document.createElement("li");
         li.textContent = word.value + "\xa0\xa0";
+        li.setAttribute("id", "li" + elements);
         // Creates the edit button
         var editButton = document.createElement("button");
         editButton.textContent = "Edit";
@@ -25,7 +26,7 @@ function addItem()
         deleteButton.textContent = "Delete";
         deleteButton.setAttribute("id", "deleteButton" + elements);
         deleteButton.addEventListener("click", deleteItem);
-        // Adding the element and buttons to the list
+        // Adds the element and buttons to the list
         li.appendChild(editButton);
         li.appendChild(deleteButton);
         ul.appendChild(li);
@@ -40,5 +41,6 @@ function editItem()
 }
 function deleteItem()
 {
-    ul.removeChild(this);   //TODO THIS DOESN'T WORK
+    //in () put the index of the item you delete
+    ul.removeChild(0);   //TODO THIS DOESN'T WORK
 }
